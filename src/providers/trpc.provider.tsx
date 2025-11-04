@@ -7,6 +7,7 @@ import { createTRPCReact } from "@trpc/react-query";
 import { useState } from "react";
 import { makeQueryClient } from "@/trpc/query-client";
 import { AppRouter } from "@/trpc/routers/app";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import superjson from "superjson";
 
@@ -51,6 +52,7 @@ export function TRPCProvider(
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         {props.children}
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </trpc.Provider>
   );
